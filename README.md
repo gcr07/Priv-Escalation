@@ -121,7 +121,32 @@ nombre del archivo .c -o de output nombre del ejecutable
 
 ## Cron Job Abuse
 
+Existen dos carpetas que identifique las cuales pueden contener cronjobs
 
+>We can confirm that a cron job is running using pspy, a command-line tool used to view running processes without the need for root privileges. We can use it to see commands run by other users, cron jobs, etc. It works by scanning procfs.
+
+> Let's run pspy and have a look. The -pf flag tells the tool to print commands and file system events and -i 1000 tells it to scan profcs every 1000ms (or every second).
+
+```
+/var/spool/cron
+/etc/cron.d
+
+```
+
+Prefieo usar el script de s4vitar para ver los procesos
+
+```
+#!/bin/bash
+
+old_process=$(ps -eo command)
+
+while true; do
+	new_process=$(ps -eo command)
+	diff <(echo "$old_process") <(echo "$new_process") | grep "[\>\<]" | grep -v "procmon.sh" | grep -v "command"
+	old_process=$new_process
+done
+
+```
 
 
 
