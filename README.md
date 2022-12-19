@@ -148,5 +148,33 @@ done
 
 ```
 
+## Special Permissions
+
+### Setuid Bit SUID
+
+> The Set User ID upon Execution (setuid) permission can allow a user to execute a program or script with the permissions of another user, typically with elevated privileges. The setuid bit appears as an s.
+
+  
+Aparte de la s tambien es un 4 por ejemplo 4755 
+
+```
+find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null # eso del ls no eejecuta un comando despues de encontralo
+-rwsr-xr-x 1 root root 16728 Sep  1 19:06 /home/htb-student/shared_obj_hijack/payroll
+```
+
+###  Set-Group-ID (setgid)
+
+
+> The Set-Group-ID (setgid) permission is another special permission that allows us to run binaries as if we were part of the group that created them.
+
+
+```
+
+find / -uid 0 -perm -6000 -type f 2>/dev/null
+-rwsr-sr-x 1 root root 85832 Nov 30  2017 /usr/lib/snapd/snap-confine
+
+```
+
+
 
 
