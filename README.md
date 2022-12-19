@@ -43,6 +43,21 @@ sudo -u user_example
 sudo -l
 ```
 
+Esto se configura en el archivo 
+
+
+```
+configured in /etc/sudoers
+
+```
+
+Por ejemplo:
+
+```
+(ALL) NOPASSWD: /usr/sbin/tcpdump # an attacker could leverage this to take advantage of a the postrotate-command option.
+```
+
+
 ## Buscar archivos interesantes ( configuration files, Readable Shadow files, password hashes in /etc/passwd )
 
 Por ejemplo un hash dentro del archivo passwd 
