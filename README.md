@@ -87,6 +87,18 @@ lsblk
 
 > Puede descubrir un directorio grabable donde un trabajo cron coloca archivos, lo que proporciona una idea de la frecuencia con la que se ejecuta el trabajo cron y podría usarse para elevar los privilegios si el script que ejecuta el trabajo cron también se puede escribir.
 
+### Find
 
+Usa el comando find lo mas especifico posible para encontrar archivos intenresantes aqui algunas configuracion
+
+
+#### -path
+
+
+
+
+```
+find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
+```
 
 
