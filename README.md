@@ -92,13 +92,15 @@ lsblk
 Usa el comando find lo mas especifico posible para encontrar archivos intenresantes aqui algunas configuracion
 
 
-#### -path
-
-
+#### Encontrar carpetas con permiso de escritura para otros usuarios que no sean el que estamos en ese momento
 
 
 ```
 find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
 ```
 
+#### Encontrar archuvos con el permiso de escritura
 
+```
+find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
+```
