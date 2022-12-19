@@ -104,3 +104,24 @@ find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
 ```
 find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
 ```
+
+## Kernel Exploits
+
+```
+uname -a
+cat /etc/lsb-release
+
+```
+### Compilar cosas en C
+
+```
+gcc kernel_expoit.c -o kernel_expoit
+nombre del archivo .c -o de output nombre del ejecutable
+```
+
+## Cron Job Abuse
+
+
+
+
+
