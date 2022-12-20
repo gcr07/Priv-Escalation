@@ -223,3 +223,4 @@ Algun truco de grep que no sabia buscar de manera recursiva y con --text te mues
 grep -r terminoabuscar /ruta --text | grep -vE "jpg|Binary"
 
 ```
+
