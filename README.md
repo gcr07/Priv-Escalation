@@ -163,11 +163,24 @@ done
 
 ```
 
+
+ps -eo permite mostrar todo y mostrarlo por un formato 
+
+
+### Use process substitution:
+
+<(...) is called process substitution. It converts the output of a command into a file-like object that diff can read from. While process substitution is not POSIX, it is supported by bash, ksh, and zsh.
+
+```
+diff <(cat /etc/passwd) <(cut -f2 /etc/passwd)
+
+```
+
 ## Special Permissions
 
 ### Setuid Bit SUID
 
-> The Set User ID upon Execution (setuid) permission can allow a user to execute a program or script with the permissions of another user, typically with elevated privileges. The setuid bit appears as an s.
+> The Set User ID upon Execution (setuid) permission can allow a user to execute a program or script with the permissions of another user, typically with elevated privileges. The setuid bit appears as an s. 
 
   
 Aparte de la s tambien es un 4 por ejemplo 4755 
