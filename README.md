@@ -212,4 +212,4 @@ chmod +x ls
 
 ```
 
-
+cuando usen ls se ejecutara nuestro programa!
