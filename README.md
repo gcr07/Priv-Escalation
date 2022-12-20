@@ -190,6 +190,26 @@ find / -uid 0 -perm -6000 -type f 2>/dev/null
 
 ```
 
+## Path Abuse 
 
+Para checar el path existn dos caminos
+
+```
+env | grep PATH 
+echo $PATH
+
+```
+
+Por ejemplo para ejecutar un ls que no es el verdadero si no se especifica el path absoulto 
+
+```
+PATH=.:${PATH}
+export PATH
+echo $PATH
+touch ls
+echo 'echo "PATH ABUSE!!"' > ls
+chmod +x ls
+
+```
 
 
