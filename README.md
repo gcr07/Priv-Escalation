@@ -213,3 +213,13 @@ chmod +x ls
 ```
 
 cuando usen ls se ejecutara nuestro programa!
+
+
+## Grep 
+
+Algun truco de grep que no sabia buscar de manera recursiva y con --text te muestra  que es lo que esta detectando. El ultimo grep quita esas 2 expresiones hacienod uso del or activado con el -E-
+
+```
+grep -r terminoabuscar /ruta --text | grep -vE "jpg|Binary"
+
+```
