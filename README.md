@@ -296,6 +296,16 @@ Por ejemplo en el caso de wordpress
 > Whenever finding SSH keys check the known_hosts file to find targets. This file contains a list of public keys for all the hosts which the user has connected to in the past and may be useful for lateral movement or to find data on a remote host that can be used to perform privilege escalation on our target.
   
   
+ ## Shared Libraries
+ 
+ Libraries contain compiled code or other data that developers use to avoid having to re-write the same pieces of code across multiple programs. Existen 2 tipos
+ 
+ ### Static libraries
+ 
+ 
+ 
+ ### Dynamically linked shared object libraries
+ 
  
 
 
