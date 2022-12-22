@@ -169,6 +169,14 @@ done
 
 ps -eo permite mostrar todo y mostrarlo por un formato 
 
+## diff
+
+
+
+```
+diff [options] File1 File2 
+
+```
 
 ### Use process substitution:
 
