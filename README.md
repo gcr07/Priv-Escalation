@@ -465,6 +465,50 @@ gcc src.c -fPIC -shared -o /development/libshared.so
 Copian dicha libreria a la carpeta development que fue la que se detecto ejecutan el programa y este regresa una shell con perminsos de root.
 	
 	
+## Docker
+	
+Si el usuario se encuentra en el grupo docker es posible swapnear una shell en algunos casos y en otros pues tener acceso a los archivos sin permisos de root
+
+> Placing a user in the docker group is essentially equivalent to root level access to the file system without requiring a password. Members of the docker group can spawn new docker containers. One example would be running the command docker run -v /root:/mnt -it ubuntu. This command create a new Docker instance with the /root directory on the host file system mounted as a volume. Once the container is started we are able to browse to the mounted directory and retrieve or add SSH keys for the root user. This could be done for other directories such as /etc which could be used to retrieve the contents of the /etc/shadow file for offline password cracking or adding a privileged user.
+	
+## ADM group
+	
+> Members of the adm group are able to read all logs stored in /var/log. This does not directly grant root access, but could be leveraged to gather sensitive data stored in log files or enumerate user actions and running cron jobs.
+	
+## Weak NFS Privileges
+	
+> Network File System (NFS) allows users to access shared files or directories over the network hosted on Unix/Linux systems. NFS uses TCP/UDP port 2049. Any accessible mounts can be listed remotely by issuing the command showmount -e, which lists the NFS server's export list (or the access control list for filesystems) that NFS clients.
+	
+```
+	showmount -e 10.129.2.12
+```	
+
+### Is Windows file Share SMB or NFS?
+	
+Windows file sharing is usually carried out with SMB, and Linux/Unix file sharing is done with NFS. While NFS can be deployed in windows servers, NFS allows both Linux and Windows to share the files with other systems or networks. If NFS is installed in Linux, windows files can also be shared using the NFS system.
+
+## Uso basico del NFS
+	
+El que comparte los archivos es el host el que los va a consumir es el cliente ahora primero se crea un directorio para despues consumirlos ejemplo:
+	
+![image](https://user-images.githubusercontent.com/63270579/209453219-270c0c97-6d34-4feb-80f2-5aa257bd247a.png)
+
+	
+![image](https://user-images.githubusercontent.com/63270579/209453225-fccc1e69-1b4c-488e-b6e2-ec9859d5d937.png)
+	
+Mostrar cuanto espacio usa los montajes 
+	
+![image](https://user-images.githubusercontent.com/63270579/209453242-fb0dd670-7c39-470f-b7bb-6e3f5b760845.png)
+
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
