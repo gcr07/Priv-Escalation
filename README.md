@@ -298,16 +298,26 @@ Por ejemplo en el caso de wordpress
   
  ## Shared Libraries
  
-> It is common for Linux programs to use dynamically linked shared object libraries. Libraries contain compiled code or other data that developers use to avoid having to re-write the same pieces of code across multiple programs.
+ ![image](https://user-images.githubusercontent.com/63270579/209447601-a55372cc-ea89-490d-a641-1174bc71b963.png)
+ 
+It is common for Linux programs to use dynamically linked shared object libraries. Libraries contain compiled code or other data that developers use to avoid having to re-write the same pieces of code across multiple programs.
 
 Two types of libraries exist in Linux: 
 
+> https://medium.com/swlh/linux-basics-static-libraries-vs-dynamic-libraries-a7bcf8157779
+
+
  ### Static libraries  (denoted by the .a file extension) 
  
- 
+ > When a program is compiled, static libraries become part of the program and can not be altered.
+
+En conclusion una libreria estatica se combina al momento de compilar el programa y ya no se puede aleter
  
  ### Dynamically linked shared object libraries (denoted by the .so file extension)
  
+> However, dynamic libraries can be modified to control the execution of the program that calls them.
+ 
+ Para resumir son como las DLLs de Windows 
  
 ## LD_PRELOAD Privilege Escalation
 
