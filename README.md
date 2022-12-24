@@ -393,5 +393,5 @@ here <COMMAND> mean which command have u allowed to do with sudo.
 
 https://unixhealthcheck.com/blog?id=363
 
-
+https://c0nd4.medium.com/oscp-privilege-escalation-guide-4b3623f57d71
 
