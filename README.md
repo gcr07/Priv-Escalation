@@ -325,10 +325,23 @@ En conclusion una libreria estatica se combina al momento de compilar el program
 
 Additionally, the LD_PRELOAD environment variable can load a library before executing a binary. The functions from this library are given preference over the default ones. The shared objects required by a binary can be viewed using the ldd utility.
 
+### Argumentos que se usan para compilar
+
+> https://gcc.gnu.org/onlinedocs/gcc-8.5.0/gcc/Link-Options.html
+
+Librerias como se compilan que son y los argumentos.
+
+> https://medium.com/swlh/linux-basics-static-libraries-vs-dynamic-libraries-a7bcf8157779
+
+```
+gcc -fPIC -shared -o root.so root.c -nostartfiles
+```
+-o output
+-shared para crear una shared library
+-fPIC The -fPIC flag allows the following code to be referenced at any virtual address at runtime. It stands for Position Independent Code.
 
 
-
-
+> With the “*.c” — it takes all of the C source files in the current directory and makes a shared library called “liball.so.” The -fPIC flag allows the following code to be referenced at any virtual address at runtime. It stands for Position Independent Code.The library does not hold data at fixed addresses because its location in memory will change between programs. Object files get compiled by using the -shared flag. The compiler will later identify a library by searching for files beginning with “lib” and ending with the naming convention, .so
 
 
 
