@@ -343,6 +343,9 @@ output name.
 
 Para crear una shared library.
 
+#### -nostartfiles
+
+Do not use the standard system startup files when linking. The standard system libraries are used normally, unless -nostdlib or -nodefaultlibs is used.
 
 #### -fPIC The -fPIC 
 
