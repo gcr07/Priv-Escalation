@@ -302,6 +302,8 @@ Por ejemplo en el caso de wordpress
  
 It is common for Linux programs to use dynamically linked shared object libraries. Libraries contain compiled code or other data that developers use to avoid having to re-write the same pieces of code across multiple programs.
 
+> There are multiple methods for specifying the location of dynamic libraries, so the system will know where to look for them on program execution. This includes the -rpath or -rpath-link flags when compiling a program, using the environmental variables LD_RUN_PATH or LD_LIBRARY_PATH, placing libraries in the /lib or /usr/lib default directories, or specifying another directory containing the libraries within the /etc/ld.so.conf configuration file.
+
 Two types of libraries exist in Linux: 
 
 > https://medium.com/swlh/linux-basics-static-libraries-vs-dynamic-libraries-a7bcf8157779
@@ -321,7 +323,7 @@ En conclusion una libreria estatica se combina al momento de compilar el program
  
 ## LD_PRELOAD Privilege Escalation
 
-
+Additionally, the LD_PRELOAD environment variable can load a library before executing a binary. The functions from this library are given preference over the default ones. The shared objects required by a binary can be viewed using the ldd utility.
 
 
 
