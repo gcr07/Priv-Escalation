@@ -395,3 +395,4 @@ https://unixhealthcheck.com/blog?id=363
 
 https://c0nd4.medium.com/oscp-privilege-escalation-guide-4b3623f57d71
 
+https://medium.com/@dw3113r/active-directory-attack-cheat-sheet-ea9e9744028d	
