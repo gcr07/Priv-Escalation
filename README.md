@@ -298,15 +298,19 @@ Por ejemplo en el caso de wordpress
   
  ## Shared Libraries
  
- Libraries contain compiled code or other data that developers use to avoid having to re-write the same pieces of code across multiple programs. Existen 2 tipos
- 
- ### Static libraries
- 
- 
- 
- ### Dynamically linked shared object libraries
+> It is common for Linux programs to use dynamically linked shared object libraries. Libraries contain compiled code or other data that developers use to avoid having to re-write the same pieces of code across multiple programs.
+
+Two types of libraries exist in Linux: 
+
+ ### Static libraries  (denoted by the .a file extension) 
  
  
+ 
+ ### Dynamically linked shared object libraries (denoted by the .so file extension)
+ 
+ 
+## LD_PRELOAD Privilege Escalation
+
 
 
 
